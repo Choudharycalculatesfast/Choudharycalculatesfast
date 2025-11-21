@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choudhary Calculates Fast!</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+/* TOP NAV */
+.navbar {
+  width: 100%;
+  background: #111;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.nav-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+.nav-links button {
+  background: #333;
+  border: none;
+  padding: 10px 18px;
+  margin-left: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.nav-links button:hover {
+  background: #555;
+}
+
+/* HOME PAGE */
+#home {
+  text-align: center;
+  padding: 80px 20px;
+}
+.hero {
+  font-size: 40px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+}
+.subtext {
+  font-size: 20px;
+  color: #444;
+  max-width: 700px;
+  margin: auto;
+}
+.about-box {
+  margin: 60px auto;
+  max-width: 800px;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.footer {
+  text-align: center;
+  margin-top: 80px;
+  padding: 20px;
+  background: #ddd;
+  font-size: 16px;
+}
+
+.page { display: none; padding: 30px; }
+.calc-page { padding: 30px; }
+
+/* Solutions */
+#solutionBox, #fracSolution {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* CALCULATOR BUTTONS */
+.calcBtn,
+#normalCalc button,
+#scientificCalc button {
+  width: 60px;
+  height: 60px;
+  font-size: 22px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  background: #2b5797;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.calcBtn:hover,
+#normalCalc button:hover,
+#scientificCalc button:hover {
+  background: #1d3e6b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-title">Choudhary Calculates Fast!</div>
+  <div class="nav-links">
+    <button onclick="openPage('home')">Home</button>
+    <button onclick="openPage('normalCalc')">Normal</button>
+    <button onclick="openPage('scientificCalc')">Scientific</button>
+    <button onclick="openPage('fractionCalc')">Fraction</button>
+    <button onclick="openPage('fullQpage')">Word Solver</button>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div id="home" class="page home-section" style="display:block;">
+  <div class="hero">Welcome to Choudhary Calculates Fast!</div>
+  <div class="subtext">Your one-stop platform for fast calculations, smart math solving, and advanced tools built by Sahaj Choudhary.</div>
+
+  <div class="about-box">
+    <h2>About Us</h2>
+    <p>
+      Choudhary Calculates Fast is a smart and fast-growing online platform designed to make your math solving experience easier. From normal calculators to scientific tools, fraction solvers, and full question analyzers — everything is available in one place.
+      <br><br>
+      This site is created and maintained by <b>Sahaj Choudhary</b> with the goal of helping students and math lovers calculate quickly and accurately.
+    </p>
+  </div>
+
+  <div class="footer">
+    Gmail for queries: <b>info.choudharyproductions@gmail.com</b><br>
+    Website collaboration contact: <b>sahaj7suii@gmail.com</b>
+  </div>
+</div>
+
+<!-- PAGES -->
+<div id="normalCalc" class="page calc-page">
+  <h2>Normal Calculator</h2>
+  <input id="calcDisplay" style="width:260px; height:55px; font-size:26px; border-radius:8px; border:2px solid #444; padding:5px;"><br><br>
+  <button class="calcBtn" onclick="press('7')">7</button>
+  <button onclick="press('8')">8</button>
+  <button onclick="press('9')">9</button>
+  <button onclick="press('/')">/</button><br>
+  <button onclick="press('4')">4</button>
+  <button onclick="press('5')">5</button>
+  <button onclick="press('6')">6</button>
+  <button onclick="press('*')">*</button><br>
+  <button onclick="press('1')">1</button>
+  <button onclick="press('2')">2</button>
+  <button onclick="press('3')">3</button>
+  <button onclick="press('-')">-</button><br>
+  <button onclick="press('0')">0</button>
+  <button onclick="press('.')">.</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="press('C')">C</button>
+</div>
+
+<div id="scientificCalc" class="page calc-page">
+  <h2>Scientific Calculator</h2>
+  <input id="sciDisplay" style="width:200px; height:40px; font-size:20px"><br><br>
+  <button onclick="sciPress('Math.sin(')">sin</button>
+  <button onclick="sciPress('Math.cos(')">cos</button>
+  <button onclick="sciPress('Math.tan(')">tan</button><br>
+  <button onclick="sciPress('**')">^</button>
+  <button onclick="sciPress(')')">)</button>
+  <button onclick="sciPress('C')">C</button>
+  <button onclick="sciCalculate()">=</button>
+</div>
+
+<div id="fractionCalc" class="page calc-page">
+  <h2>Fraction Calculator</h2>
+  <input id="frac1" placeholder="a/b">
+  <select id="fracOp">
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+  </select>
+  <input id="frac2" placeholder="c/d">
+  <button onclick="solveFraction()">Solve</button>
+  <div id="fracSolution"></div>
+</div>
+
+<div id="fullQpage" class="page calc-page">
+  <h2>Word Problem Solver</h2>
+  <textarea id="fullQ" style="width:300px; height:80px;"></textarea><br><br>
+  <button onclick="solveFull()">Solve</button>
+  <div id="solutionBox"></div>
+</div>
+
+<script>
+function openPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+let disp = document.getElementById('calcDisplay');
+function press(val) { if (val === 'C') disp.value = ""; else disp.value += val; }
+function calculate() { try { disp.value = eval(disp.value); } catch { disp.value = "Error"; } }
+
+function solveFull() {
+  let q = document.getElementById('fullQ').value.toLowerCase();
+  if (!q) return;
+
+  let nums = q.match(/[-]?\d+/g);
+  let result = "Error";
+
+  if (nums && nums.length >= 2) {
+    let a = parseFloat(nums[0]);
+    let b = parseFloat(nums[1]);
+
+    if (q.includes("left") || q.includes("ate") || q.includes("took")) result = a - b;
+    else if (q.includes("total") || q.includes("sum")) result = a + b;
+    else { try { result = eval(q); } catch { result = "Error"; } }
+  }
+
+  document.getElementById('solutionBox').style.display = "block";
+  document.getElementById('solutionBox').innerHTML = `You entered: ${q}<br><br><b>Solution: ${result}</b>`;
+}
+
+function sciPress(v) {
+  let d = document.getElementById('sciDisplay');
+  if (v === 'C') d.value = ''; else d.value += v;
+}
+function sciCalculate() {
+  let d = document.getElementById('sciDisplay');
+  try { d.value = eval(d.value); } catch { d.value = 'Error'; }
+}
+
+function parseFrac(str) { let p = str.split('/'); return { n: parseFloat(p[0]), d: parseFloat(p[1]) }; }
+function solveFraction() {
+  let f1 = parseFrac(document.getElementById('frac1').value);
+  let op = document.getElementById('fracOp').value;
+  let f2 = parseFrac(document.getElementById('frac2').value);
+
+  let n, d;
+
+  if (op === '+') { n = f1.n * f2.d + f2.n * f1.d; d = f1.d * f2.d; }
+  if (op === '-') { n = f1.n * f2.d - f2.n * f1.d; d = f1.d * f2.d; }
+  if (op === '*') { n = f1.n * f2.n; d = f1.d * f2.d; }
+  if (op === '/') { n = f1.n * f2.d; d = f1.d * f2.n; }
+
+  document.getElementById('fracSolution').style.display = "block";
+  document.getElementById('fracSolution').innerHTML = `Solution:<br><br> ${f1.n}/${f1.d} ${op} ${f2.n}/${f2.d} = <b>${n}/${d}</b>`;
+}
+</script>
+
+</body>
+</html>
